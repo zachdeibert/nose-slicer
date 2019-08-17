@@ -28,10 +28,10 @@ func (profile Profile) GetRadius(pos, diameter, height float64) (float64, error)
 	case Conical:
 		return diameter / 2 * pos / height, nil
 	case Ogive:
-		fullAngle := 2 * math.Asin(math.Sqrt(height*height+diameter*diameter)/2)
-		radius := diameter / math.Sin(fullAngle)
-		angle := math.Asin((height - pos) / radius)
-		return diameter/2 - radius*(1-math.Cos(angle)), nil
+		radius := diameter / 2
+		ogiveRadius := (radius*radius + height*height) / (2 * radius)
+		dh := height - pos
+		return math.Sqrt(ogiveRadius*ogiveRadius-dh*dh) + radius - ogiveRadius, nil
 	default:
 		return math.NaN(), errors.New("Invalid constant")
 	}

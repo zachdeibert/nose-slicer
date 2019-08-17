@@ -26,7 +26,7 @@ const (
 )
 
 // Use writes the gcodes to set the unit type
-func (unit Unit) Use(gcode gcode.Writer) error {
+func (unit Unit) Use(gcode *gcode.Writer) error {
 	switch unit {
 	case Microns, Millimeters, Centimeters, Meters:
 		return gcode.UseMillimeters()
@@ -60,7 +60,7 @@ func (unit Unit) GetMultiplier() (float64, error) {
 
 // ApplyTo applies a unit to the options and gcode so all further commands can
 // directly use what is in the options structure
-func (unit Unit) ApplyTo(opts *Options, gcode gcode.Writer) error {
+func (unit Unit) ApplyTo(opts *Options, gcode *gcode.Writer) error {
 	multiplier, err := unit.GetMultiplier()
 	if err != nil {
 		return err

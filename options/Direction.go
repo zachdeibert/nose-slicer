@@ -17,7 +17,7 @@ const (
 )
 
 // MakeCircle generates the gcode to make a complete circle in the given direction
-func (dir Direction) MakeCircle(radius float64, feedRate float64, currentX float64, currentY float64, gcode gcode.Writer) error {
+func (dir Direction) MakeCircle(radius float64, feedRate float64, currentX float64, currentY float64, gcode *gcode.Writer) error {
 	if currentX != 0 && currentY != 0 {
 		return errors.New("Can only start on one of the axes")
 	} else if currentX == 0 && currentY == 0 {

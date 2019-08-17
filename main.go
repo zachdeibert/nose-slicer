@@ -3,8 +3,10 @@ package main
 import (
 	"errors"
 	"fmt"
+	"io"
 	"os"
 
+	"./logic"
 	"./options"
 )
 
@@ -20,7 +22,10 @@ func main() {
 	case options.PrintVersion:
 		fmt.Print(options.VersionString)
 	case options.Normal:
-		fmt.Println("// TODO")
+		if err := logic.DoSlice(opts); err != nil {
+			io.WriteString(os.Stderr, err.Error())
+			os.Exit(1)
+		}
 	default:
 		panic(errors.New("Invalid mode"))
 	}
