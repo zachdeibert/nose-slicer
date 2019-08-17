@@ -65,3 +65,25 @@ func (unit Unit) GetMultiplier() (float64, error) {
 		return math.NaN(), errors.New("Invalid constant")
 	}
 }
+
+// ApplyTo applies a unit to the options and gcode so all further commands can
+// directly use what is in the options structure
+func (unit Unit) ApplyTo(opts *Options, gcode gcode.Writer) error {
+	multiplier, err := unit.GetMultiplier()
+	if err != nil {
+		return err
+	}
+	if err = unit.Use(gcode); err != nil {
+		return err
+	}
+	opts.Diameter *= multiplier
+	opts.Height *= multiplier
+	opts.StartY *= multiplier
+	opts.EndY *= multiplier
+	opts.LayerHeight *= multiplier
+	opts.FeedRate *= multiplier
+	opts.RapidFeedRate *= multiplier
+	opts.MaterialDiameter *= multiplier
+	opts.EndMillDiameter *= multiplier
+	return nil
+}
