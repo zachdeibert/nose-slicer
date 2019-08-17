@@ -31,7 +31,7 @@ Options:
                             meter(s)|thou|mil(s)|in|inch(es)]
     -um, -mm, -cm, -m, -in  Shortcuts for setting the unit (see -u, --unit)
     -cw, -ccw               Sets the direction in which the circles are milled
-    -O, --overlay           Sets the percentage of each cut that will overlay
+    -O, --overlap           Sets the percentage of each cut that will overlap
                             the last
     -f, --flat-layers       Sets the number of layers to cut completely flat at
                             the top to make sure the tip will be inside the
@@ -56,7 +56,7 @@ Default Values:
     --mat-diameter          The same as --nose-diameter
     --unit                  Millimeters
     -cw                     Clockwise
-    --overlay               30%
+    --overlap               30%
     --flat-layers           2
     --out                   Standard Output
 `
