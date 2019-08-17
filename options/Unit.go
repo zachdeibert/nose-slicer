@@ -28,17 +28,9 @@ const (
 // Use writes the gcodes to set the unit type
 func (unit Unit) Use(gcode gcode.Writer) error {
 	switch unit {
-	case Microns:
+	case Microns, Millimeters, Centimeters, Meters:
 		return gcode.UseMillimeters()
-	case Millimeters:
-		return gcode.UseMillimeters()
-	case Centimeters:
-		return gcode.UseMillimeters()
-	case Meters:
-		return gcode.UseMillimeters()
-	case Thou:
-		return gcode.UseInches()
-	case Inches:
+	case Thou, Inches:
 		return gcode.UseInches()
 	default:
 		return errors.New("Invalid constant")
