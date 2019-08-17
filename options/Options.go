@@ -3,11 +3,12 @@ package options
 // Options represents all of the possible options a user can specify from the
 // command line
 type Options struct {
+	Mode               Mode
 	Profile            Profile
 	Diameter           float64
 	Height             float64
-	StartY             float64
-	EndY               float64
+	StartZ             float64
+	EndZ               float64
 	LayerHeight        float64
 	FeedRate           float64
 	RapidFeedRate      float64
@@ -17,5 +18,6 @@ type Options struct {
 	Unit               Unit
 	Direction          Direction
 	PassOverlapPercent float64
-	FlatLayers         uint
+	FlatLayers         uint64
+	OutputFile         *string
 }

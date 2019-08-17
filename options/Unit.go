@@ -70,8 +70,8 @@ func (unit Unit) ApplyTo(opts *Options, gcode gcode.Writer) error {
 	}
 	opts.Diameter *= multiplier
 	opts.Height *= multiplier
-	opts.StartY *= multiplier
-	opts.EndY *= multiplier
+	opts.StartZ *= multiplier
+	opts.EndZ *= multiplier
 	opts.LayerHeight *= multiplier
 	opts.FeedRate *= multiplier
 	opts.RapidFeedRate *= multiplier
