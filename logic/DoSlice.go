@@ -13,7 +13,7 @@ func DoSlice(opts options.Options) error {
 	if opts.OutputFile == nil {
 		writer = gcode.CreateWriter(os.Stdout)
 	} else {
-		file, err := os.Open(*opts.OutputFile)
+		file, err := os.Create(*opts.OutputFile)
 		if err != nil {
 			return err
 		}
